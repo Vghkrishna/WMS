@@ -6,6 +6,18 @@ A full-stack **MERN** inventory management system with **role-based access contr
 
 ![Stack](https://img.shields.io/badge/Stack-MERN-4f46e5) ![Node](https://img.shields.io/badge/Node-%E2%89%A518-16a34a) ![License](https://img.shields.io/badge/License-MIT-blue)
 
+## 🔗 Live Demo
+
+| | URL |
+|---|---|
+| **Frontend (app)** | **https://wms-frontend-weld.vercel.app** |
+| **Backend (API)** | https://wms-api-wvzd.onrender.com/api |
+| **Health check** | https://wms-api-wvzd.onrender.com/api/health |
+
+Log in with any demo account below (or use the one-click demo buttons on the login screen).
+
+> ⏳ The API is hosted on Render's free tier, which sleeps after inactivity — the **first request may take ~30–50 s to wake up**, then it's fast.
+
 ---
 
 ## ✨ Features
@@ -250,7 +262,15 @@ The app is deployment-ready for common platforms:
 - **Frontend** → Vercel / Netlify. Build command `npm run build`, output dir `dist`, and set `VITE_API_URL` to your deployed API URL. A `vercel.json` (SPA rewrite) is included.
 - **Database** → MongoDB Atlas (free tier). Put the connection string in `MONGODB_URI`.
 
-> **Live demo:** _add your deployed URL here after deploying._
+**This project is deployed:**
+
+| Layer | Platform | URL |
+|-------|----------|-----|
+| Frontend | Vercel | https://wms-frontend-weld.vercel.app |
+| Backend | Render | https://wms-api-wvzd.onrender.com/api |
+| Database | MongoDB Atlas | (cloud cluster) |
+
+> **Note on Atlas:** the cluster's Network Access must allow the host running the API. For Render's free tier (no static outbound IP), set Atlas Network Access to `0.0.0.0/0`.
 
 ---
 
