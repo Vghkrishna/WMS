@@ -321,14 +321,20 @@
 .donut-wrap {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.donut-chart {
+  flex: 1 1 190px;
+  min-width: 170px;
+  max-width: 260px;
 }
 .donut-legend {
-  flex: 1;
+  flex: 1 1 150px;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  min-width: 0;
+  min-width: 145px;
 }
 .legend-item {
   display: flex;
@@ -603,6 +609,95 @@
 @media (max-width: 560px) {
   .stat-grid { grid-template-columns: 1fr; }
   .login-demo-grid { grid-template-columns: 1fr; }
-  .donut-wrap { flex-direction: column; }
   .activity-time { display: none; }
+}
+
+/* ============================================================
+   RESPONSIVE TABLES → CARDS (mobile / small tablet)
+   Each row becomes a self-contained card; every cell shows its
+   column name as an inline label so nothing is ever cut off.
+   ============================================================ */
+@media (max-width: 860px) {
+  .table-wrap { overflow: visible; }
+  table.data { font-size: 0.9rem; }
+  table.data thead { display: none; }
+  table.data,
+  table.data tbody { display: block; width: 100%; }
+
+  table.data tr {
+    display: block;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 14px;
+    overflow: hidden;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+  table.data tbody tr:hover {
+    background: var(--surface);
+    box-shadow: var(--shadow);
+    transform: translateY(-2px);
+  }
+  table.data tbody tr:last-child td { border-bottom: none; }
+
+  table.data td {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 12px 16px;
+    border: none;
+    border-bottom: 1px solid var(--border);
+    text-align: right;
+    min-height: 46px;
+  }
+  table.data td:last-child { border-bottom: none; }
+  table.data td::before {
+    content: attr(data-label);
+    flex: 0 0 auto;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    text-align: left;
+  }
+  table.data td > * { min-width: 0; }
+
+  /* First cell = card header (product / user / action) */
+  table.data td:first-child {
+    background: var(--surface-2);
+    padding: 14px 16px;
+    justify-content: flex-start;
+  }
+  table.data td:first-child::before { display: none; }
+
+  /* Actions cell: label left, buttons right */
+  table.data td.td-actions { justify-content: space-between; }
+
+  /* Low-stock rows keep a red accent instead of a full tint */
+  .row-lowstock { background: var(--surface) !important; }
+  .row-lowstock td:first-child {
+    box-shadow: inset 4px 0 0 var(--danger);
+  }
+
+  /* Let long notes / values wrap cleanly */
+  table.data td.td-wrap {
+    flex-wrap: wrap;
+    text-align: left;
+  }
+  table.data td.td-wrap > span,
+  table.data td.td-wrap > div { text-align: left; }
+
+  .toolbar { padding: 12px; }
+  .logs-date { max-width: 100%; flex: 1 1 130px; }
+}
+
+@media (max-width: 560px) {
+  .donut-wrap { flex-direction: column; }
+  .donut-chart { max-width: 100%; width: 100%; }
+  .donut-legend { width: 100%; }
+  .page-header h1 { font-size: 1.45rem; }
+  .app-content { padding: 16px 14px; }
 }

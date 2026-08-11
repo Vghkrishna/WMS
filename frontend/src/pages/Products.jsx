@@ -201,27 +201,28 @@ const Products = () => {
                             <strong>{p.name}</strong>
                           </div>
                         </td>
-                        <td className="mono muted">{p.sku}</td>
-                        <td>
+                        <td className="mono muted" data-label="SKU">{p.sku}</td>
+                        <td data-label="Category">
                           <span className="badge badge-neutral">{p.category}</span>
                         </td>
-                        <td className="muted">
+                        <td className="muted" data-label="Location">
                           <MapPin size={13} style={{ verticalAlign: -2 }} /> {p.location || '—'}
                         </td>
                         <td
                           style={{ textAlign: 'right' }}
                           className={`mono ${low ? 'text-danger' : ''}`}
+                          data-label="Qty"
                         >
                           <strong>{formatNumber(p.quantity)}</strong>
                         </td>
-                        <td style={{ textAlign: 'right' }} className="mono">
+                        <td style={{ textAlign: 'right' }} className="mono" data-label="Price">
                           {formatCurrency(p.price)}
                         </td>
-                        <td>
+                        <td data-label="Status">
                           <StockBadge quantity={p.quantity} threshold={p.lowStockThreshold} />
                         </td>
                         {can.manageProducts && (
-                          <td>
+                          <td className="td-actions" data-label="Actions">
                             <div className="flex gap-sm" style={{ justifyContent: 'flex-end' }}>
                               <button
                                 className="btn btn-icon btn-ghost"

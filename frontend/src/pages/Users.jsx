@@ -181,15 +181,15 @@ const UsersPage = () => {
                         <strong>{u.name}</strong>
                       </div>
                     </td>
-                    <td className="muted">
-                      <Mail size={13} style={{ verticalAlign: -2 }} /> {u.email}
+                    <td className="muted td-wrap" data-label="Email">
+                      <span><Mail size={13} style={{ verticalAlign: -2 }} /> {u.email}</span>
                     </td>
-                    <td>
+                    <td data-label="Role">
                       <span className={`badge ${roleBadge[u.role]}`}>
                         <Shield size={12} /> {u.role}
                       </span>
                     </td>
-                    <td className="muted">{formatDate(u.createdAt)}</td>
+                    <td className="muted" data-label="Joined">{formatDate(u.createdAt)}</td>
                   </motion.tr>
                 ))}
               </tbody>

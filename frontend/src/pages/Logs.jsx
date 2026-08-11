@@ -158,27 +158,30 @@ const Logs = () => {
                           <Icon size={13} /> {meta.label}
                         </span>
                       </td>
-                      <td>
-                        <strong>{log.productId?.name || 'Deleted product'}</strong>
-                        {log.productId?.sku && (
-                          <div className="mono soft" style={{ fontSize: '0.78rem' }}>
-                            {log.productId.sku}
-                          </div>
-                        )}
+                      <td data-label="Product">
+                        <div>
+                          <strong>{log.productId?.name || 'Deleted product'}</strong>
+                          {log.productId?.sku && (
+                            <div className="mono soft" style={{ fontSize: '0.78rem' }}>
+                              {log.productId.sku}
+                            </div>
+                          )}
+                        </div>
                       </td>
                       <td
                         style={{ textAlign: 'right' }}
                         className={`mono ${log.action === 'outbound' ? 'text-danger' : 'text-success'}`}
+                        data-label="Change"
                       >
                         <strong>
                           {meta.sign}
                           {formatNumber(log.quantity)}
                         </strong>
                       </td>
-                      <td style={{ textAlign: 'right' }} className="mono muted">
+                      <td style={{ textAlign: 'right' }} className="mono muted" data-label="Resulting">
                         {log.resultingQuantity != null ? formatNumber(log.resultingQuantity) : '—'}
                       </td>
-                      <td>
+                      <td data-label="User">
                         <div className="cell-user">
                           <span className="avatar avatar-sm">
                             {log.userId?.name?.charAt(0).toUpperCase() || '?'}
@@ -186,10 +189,10 @@ const Logs = () => {
                           <span>{log.userId?.name || 'Unknown'}</span>
                         </div>
                       </td>
-                      <td className="muted" style={{ maxWidth: 220 }}>
+                      <td className="muted td-wrap" data-label="Notes" style={{ maxWidth: 260 }}>
                         {log.notes || <span className="soft">—</span>}
                       </td>
-                      <td className="muted" style={{ whiteSpace: 'nowrap' }}>
+                      <td className="muted" data-label="Date" style={{ whiteSpace: 'nowrap' }}>
                         {formatDateTime(log.createdAt)}
                       </td>
                     </motion.tr>

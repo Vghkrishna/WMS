@@ -205,6 +205,7 @@ const Dashboard = () => {
             <div className="empty">No product data yet.</div>
           ) : (
             <div className="donut-wrap">
+              <div className="donut-chart">
               <ResponsiveContainer width="100%" height={220}>
                 <PieChart>
                   <Pie
@@ -229,6 +230,7 @@ const Dashboard = () => {
                   />
                 </PieChart>
               </ResponsiveContainer>
+              </div>
               <div className="donut-legend">
                 {stats.byCategory.map((c, i) => (
                   <div key={c.category} className="legend-item">
