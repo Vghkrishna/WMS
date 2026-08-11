@@ -1,0 +1,22 @@
+# Render.com blueprint for the WMS backend API.
+# Create a MongoDB Atlas cluster and set MONGODB_URI in the Render dashboard.
+services:
+  - type: web
+    name: wms-api
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRE
+        value: 7d
+      - key: CLIENT_URL
+        sync: false
