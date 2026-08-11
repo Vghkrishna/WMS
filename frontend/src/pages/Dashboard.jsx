@@ -7,7 +7,8 @@ import {
   AlertTriangle,
   Boxes,
   ArrowUpRight,
-  ArrowDownRight,
+  PackagePlus,
+  PackageMinus,
   TrendingUp,
   ArrowRight,
 } from 'lucide-react';
@@ -288,9 +289,9 @@ const Dashboard = () => {
               >
                 <span className={`activity-icon ${log.action}`}>
                   {log.action === 'outbound' ? (
-                    <ArrowDownRight size={16} />
+                    <PackageMinus size={16} />
                   ) : (
-                    <ArrowUpRight size={16} />
+                    <PackagePlus size={16} />
                   )}
                 </span>
                 <div className="activity-main">

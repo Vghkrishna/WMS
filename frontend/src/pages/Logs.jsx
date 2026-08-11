@@ -2,8 +2,8 @@ import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import toast from 'react-hot-toast';
 import {
-  ArrowDownToLine,
-  ArrowUpFromLine,
+  PackagePlus,
+  PackageMinus,
   SlidersHorizontal,
   ScrollText,
   RotateCcw,
@@ -13,8 +13,8 @@ import PageHeader from '../components/PageHeader.jsx';
 import { formatNumber, formatDateTime, getErrorMessage } from '../lib/format.js';
 
 const actionMeta = {
-  inbound: { label: 'Inbound', className: 'inbound', icon: ArrowDownToLine, sign: '+' },
-  outbound: { label: 'Outbound', className: 'outbound', icon: ArrowUpFromLine, sign: '−' },
+  inbound: { label: 'Inbound', className: 'inbound', icon: PackagePlus, sign: '+' },
+  outbound: { label: 'Outbound', className: 'outbound', icon: PackageMinus, sign: '−' },
   adjustment: { label: 'Adjustment', className: 'adjustment', icon: SlidersHorizontal, sign: '±' },
 };
 

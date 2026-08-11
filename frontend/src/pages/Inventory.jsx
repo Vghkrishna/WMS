@@ -2,8 +2,8 @@ import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import toast from 'react-hot-toast';
 import {
-  ArrowDownToLine,
-  ArrowUpFromLine,
+  PackagePlus,
+  PackageMinus,
   Package,
   Boxes,
   Lock,
@@ -66,7 +66,7 @@ const MovementForm = ({ type, products, onDone }) => {
     >
       <div className="movement-head">
         <span className={`movement-icon ${type}`}>
-          {isInbound ? <ArrowDownToLine size={22} /> : <ArrowUpFromLine size={22} />}
+          {isInbound ? <PackagePlus size={22} /> : <PackageMinus size={22} />}
         </span>
         <div>
           <h3>{isInbound ? 'Inbound Stock' : 'Outbound Stock'}</h3>
@@ -139,7 +139,7 @@ const MovementForm = ({ type, products, onDone }) => {
           <Spinner size={18} />
         ) : (
           <>
-            {isInbound ? <ArrowDownToLine size={18} /> : <ArrowUpFromLine size={18} />}
+            {isInbound ? <PackagePlus size={18} /> : <PackageMinus size={18} />}
             {isInbound ? 'Add Stock' : 'Remove Stock'}
           </>
         )}
