@@ -52,27 +52,25 @@
   color: var(--text-muted);
 }
 
+/* Positioning container so an optional leading icon can sit inside the
+   select; the <select> itself carries the border, background and chevron. */
 .select-wrap {
   position: relative;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
-  background: var(--surface);
-  border: 1.5px solid var(--border-strong);
-  border-radius: var(--radius-sm);
-  padding-left: 12px;
 }
-.select-wrap .select {
-  border: none;
-  padding-left: 4px;
-  background: transparent;
+.select-wrap > svg {
+  position: absolute;
+  left: 13px;
+  color: var(--text-soft);
+  pointer-events: none;
+  z-index: 1;
 }
-.select-wrap .select:focus {
-  box-shadow: none;
+.select-wrap:has(> svg) .select {
+  padding-left: 38px;
 }
-.select-wrap:focus-within {
-  border-color: var(--brand-500);
-  box-shadow: 0 0 0 4px rgba(176, 96, 58, 0.15);
+.select:hover {
+  border-color: var(--brand-300);
 }
 
 /* ============================================================
@@ -476,6 +474,18 @@
   align-items: center;
   flex-wrap: wrap;
 }
+/* Uniform height for every control in a toolbar */
+.toolbar .input,
+.toolbar .select,
+.toolbar .btn {
+  height: 44px;
+}
+.toolbar .input-icon .input {
+  height: 44px;
+}
+.toolbar .select {
+  min-width: 158px;
+}
 .toolbar-search {
   flex: 1;
   min-width: 220px;
@@ -490,7 +500,8 @@
 }
 .logs-date {
   width: auto;
-  max-width: 170px;
+  max-width: 180px;
+  min-width: 150px;
 }
 
 .cell-product {

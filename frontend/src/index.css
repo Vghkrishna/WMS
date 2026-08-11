@@ -236,6 +236,29 @@ h4 {
 .textarea::placeholder {
   color: var(--text-soft);
 }
+/* Custom dropdown chevron — replaces the inconsistent native arrow */
+.select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 40px;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236f665a' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+.select::-ms-expand {
+  display: none;
+}
+/* Style native date inputs to match */
+input[type='date'].input {
+  cursor: pointer;
+}
+input[type='date'].input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.55;
+  filter: sepia(0.4) saturate(1.4) hue-rotate(-8deg);
+}
 .textarea {
   resize: vertical;
   min-height: 84px;
