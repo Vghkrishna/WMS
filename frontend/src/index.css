@@ -142,10 +142,33 @@ h4 {
   background: var(--gradient-brand);
   color: #fff;
   box-shadow: var(--shadow-brand);
+  position: relative;
+  overflow: hidden;
+}
+/* Premium light-sweep on hover */
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -130%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.35),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+  pointer-events: none;
 }
 .btn-primary:hover:not(:disabled) {
   box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
   transform: translateY(-1px);
+}
+.btn-primary:hover:not(:disabled)::after {
+  left: 150%;
 }
 .btn-ghost {
   background: var(--surface);
@@ -368,5 +391,17 @@ table.data tbody tr:last-child td {
 @media (max-width: 900px) {
   :root {
     --sidebar-w: 0px;
+  }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

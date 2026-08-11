@@ -25,7 +25,7 @@ import {
 import toast from 'react-hot-toast';
 import api from '../api/axios.js';
 import PageHeader from '../components/PageHeader.jsx';
-import Spinner from '../components/ui/Spinner.jsx';
+import CountUp from '../components/ui/CountUp.jsx';
 import { formatCurrency, formatNumber, formatDateTime, getErrorMessage } from '../lib/format.js';
 
 const CHART_COLORS = ['#6366f1', '#8b5cf6', '#ec4899', '#f59e0b', '#10b981', '#06b6d4', '#f43f5e'];
@@ -39,8 +39,13 @@ const item = {
   show: { opacity: 1, y: 0 },
 };
 
-const StatCard = ({ icon: Icon, label, value, tone, to, hint }) => (
-  <motion.div variants={item} className={`stat-card stat-${tone}`}>
+const StatCard = ({ icon: Icon, label, rawValue, format, tone, to, hint }) => (
+  <motion.div
+    variants={item}
+    className={`stat-card stat-${tone}`}
+    whileHover={{ y: -4 }}
+    transition={{ type: 'spring', stiffness: 300, damping: 22 }}
+  >
     <div className="stat-card-top">
       <span className="stat-icon">
         <Icon size={22} />
@@ -51,7 +56,9 @@ const StatCard = ({ icon: Icon, label, value, tone, to, hint }) => (
         </Link>
       )}
     </div>
-    <div className="stat-value">{value}</div>
+    <div className="stat-value">
+      <CountUp value={rawValue} format={format} />
+    </div>
     <div className="stat-label">{label}</div>
     {hint && <div className="stat-hint">{hint}</div>}
   </motion.div>
@@ -95,11 +102,13 @@ const Dashboard = () => {
     );
   }
 
+  const countFmt = (v) => formatNumber(Math.round(v));
   const cards = [
     {
       icon: Package,
       label: 'Total Products',
-      value: formatNumber(stats.totalProducts),
+      rawValue: stats.totalProducts,
+      format: countFmt,
       tone: 'brand',
       to: '/products',
       hint: `${formatNumber(stats.totalUnits)} units in stock`,
@@ -107,14 +116,16 @@ const Dashboard = () => {
     {
       icon: DollarSign,
       label: 'Inventory Value',
-      value: formatCurrency(stats.totalValue),
+      rawValue: stats.totalValue,
+      format: (v) => formatCurrency(v),
       tone: 'success',
       hint: 'Total stock valuation',
     },
     {
       icon: AlertTriangle,
       label: 'Low Stock Alerts',
-      value: formatNumber(stats.lowStockCount),
+      rawValue: stats.lowStockCount,
+      format: countFmt,
       tone: stats.lowStockCount > 0 ? 'danger' : 'neutral',
       to: '/products?lowStock=true',
       hint: stats.lowStockCount > 0 ? 'Needs restocking' : 'All healthy',
@@ -122,7 +133,8 @@ const Dashboard = () => {
     {
       icon: Boxes,
       label: 'Categories',
-      value: formatNumber(stats.byCategory.length),
+      rawValue: stats.byCategory.length,
+      format: countFmt,
       tone: 'violet',
       hint: 'Active product groups',
     },

@@ -246,8 +246,14 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .stat-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow);
+  box-shadow: 0 14px 34px rgba(99, 102, 241, 0.16);
+  border-color: var(--brand-300);
+}
+.stat-card:hover .stat-icon {
+  transform: scale(1.08) rotate(-4deg);
+}
+.stat-icon {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .stat-card::before {
   content: '';
