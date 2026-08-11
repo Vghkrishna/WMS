@@ -72,7 +72,7 @@
 }
 .select-wrap:focus-within {
   border-color: var(--brand-500);
-  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.14);
+  box-shadow: 0 0 0 4px rgba(176, 96, 58, 0.15);
 }
 
 /* ============================================================
@@ -86,7 +86,7 @@
 .login-brand {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(150deg, #17162a 0%, #2b2350 55%, #4c3a8a 100%);
+  background: linear-gradient(150deg, #1c1a17 0%, #2c2620 55%, #4a3a2c 100%);
   color: #fff;
   display: flex;
 }
@@ -112,12 +112,12 @@
   background:
     linear-gradient(
       180deg,
-      rgba(15, 14, 32, 0.72) 0%,
-      rgba(15, 14, 32, 0.28) 34%,
-      rgba(15, 14, 32, 0.55) 72%,
-      rgba(15, 14, 32, 0.92) 100%
+      rgba(20, 16, 11, 0.72) 0%,
+      rgba(20, 16, 11, 0.26) 34%,
+      rgba(20, 16, 11, 0.55) 72%,
+      rgba(20, 16, 11, 0.92) 100%
     ),
-    linear-gradient(105deg, rgba(76, 58, 138, 0.5), rgba(15, 14, 32, 0.1));
+    linear-gradient(105deg, rgba(120, 68, 38, 0.45), rgba(20, 16, 11, 0.1));
 }
 /* subtle brand glow at the bottom */
 .login-scrim::after {
@@ -129,7 +129,7 @@
   height: 40%;
   background: radial-gradient(
     120% 80% at 20% 100%,
-    rgba(99, 102, 241, 0.35),
+    rgba(176, 96, 58, 0.4),
     transparent 70%
   );
 }
@@ -294,7 +294,7 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .stat-card:hover {
-  box-shadow: 0 14px 34px rgba(99, 102, 241, 0.16);
+  box-shadow: 0 14px 34px rgba(176, 96, 58, 0.16);
   border-color: var(--brand-300);
 }
 .stat-card:hover .stat-icon {
@@ -333,7 +333,7 @@
   color: var(--tone-color, var(--brand-500));
 }
 .stat-icon-brand { background: var(--brand-50); color: var(--brand-600); }
-.stat-icon-violet { background: #f3e8ff; color: var(--violet-500); }
+.stat-icon-violet { background: #e2edf1; color: var(--violet-500); }
 .stat-link {
   display: grid;
   place-items: center;

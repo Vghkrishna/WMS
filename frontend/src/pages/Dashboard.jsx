@@ -28,7 +28,7 @@ import PageHeader from '../components/PageHeader.jsx';
 import CountUp from '../components/ui/CountUp.jsx';
 import { formatCurrency, formatNumber, formatDateTime, getErrorMessage } from '../lib/format.js';
 
-const CHART_COLORS = ['#6366f1', '#8b5cf6', '#ec4899', '#f59e0b', '#10b981', '#06b6d4', '#f43f5e'];
+const CHART_COLORS = ['#b0603a', '#c99a45', '#6f8b63', '#3f7d93', '#a5462e', '#8a6d4b', '#9a6a80'];
 
 const container = {
   hidden: { opacity: 0 },
@@ -176,23 +176,23 @@ const Dashboard = () => {
               <BarChart data={stats.byCategory} margin={{ left: -18, right: 8 }}>
                 <XAxis
                   dataKey="category"
-                  tick={{ fontSize: 12, fill: '#6b7192' }}
+                  tick={{ fontSize: 12, fill: '#8c8072' }}
                   tickLine={false}
-                  axisLine={{ stroke: '#e8eaf0' }}
+                  axisLine={{ stroke: '#e5ddce' }}
                 />
                 <YAxis
-                  tick={{ fontSize: 12, fill: '#6b7192' }}
+                  tick={{ fontSize: 12, fill: '#8c8072' }}
                   tickLine={false}
                   axisLine={false}
                   tickFormatter={(v) => `$${v >= 1000 ? `${(v / 1000).toFixed(0)}k` : v}`}
                 />
                 <Tooltip
-                  cursor={{ fill: 'rgba(99,102,241,0.06)' }}
+                  cursor={{ fill: 'rgba(176,96,58,0.07)' }}
                   formatter={(v) => [formatCurrency(v), 'Value']}
                   contentStyle={{
                     borderRadius: 12,
-                    border: '1px solid #e8eaf0',
-                    boxShadow: '0 8px 24px rgba(20,22,48,0.12)',
+                    border: '1px solid #e5ddce',
+                    boxShadow: '0 8px 24px rgba(40,32,22,0.14)',
                   }}
                 />
                 <Bar dataKey="value" radius={[8, 8, 0, 0]} maxBarSize={54}>
@@ -237,7 +237,7 @@ const Dashboard = () => {
                     formatter={(v, n) => [`${formatNumber(v)} units`, n]}
                     contentStyle={{
                       borderRadius: 12,
-                      border: '1px solid #e8eaf0',
+                      border: '1px solid #e5ddce',
                     }}
                   />
                 </PieChart>

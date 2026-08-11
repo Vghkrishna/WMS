@@ -1,47 +1,48 @@
 /* ============================================================
    StockFlow — Design System
-   A modern, professional WMS UI with a violet/indigo identity.
+   Classic "Charcoal & Copper" identity: warm sand surfaces,
+   charcoal sidebar, copper accents.
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap');
 
 :root {
-  /* Brand */
-  --brand-50: #eef2ff;
-  --brand-100: #e0e7ff;
-  --brand-300: #a5b4fc;
-  --brand-500: #6366f1;
-  --brand-600: #4f46e5;
-  --brand-700: #4338ca;
-  --violet-500: #8b5cf6;
-  --gradient-brand: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-  --gradient-brand-soft: linear-gradient(135deg, #eef2ff 0%, #f5f3ff 100%);
+  /* Brand — copper */
+  --brand-50: #f8efe5;
+  --brand-100: #f0ddc9;
+  --brand-300: #dcab81;
+  --brand-500: #c17a47;
+  --brand-600: #b0603a;
+  --brand-700: #8f4a2b;
+  --violet-500: #3f7d93; /* secondary accent — muted slate-teal */
+  --gradient-brand: linear-gradient(135deg, #a85a37 0%, #d1935a 100%);
+  --gradient-brand-soft: linear-gradient(135deg, #f8efe5 0%, #f4ece1 100%);
 
   /* Semantic */
-  --success: #16a34a;
-  --success-bg: #dcfce7;
-  --warning: #d97706;
-  --warning-bg: #fef3c7;
-  --danger: #dc2626;
-  --danger-bg: #fee2e2;
-  --info: #0284c7;
-  --info-bg: #e0f2fe;
+  --success: #2f7a52;
+  --success-bg: #dcece1;
+  --warning: #b07d1a;
+  --warning-bg: #f6ead0;
+  --danger: #c0392b;
+  --danger-bg: #f6e0dc;
+  --info: #3f7d93;
+  --info-bg: #e1edf1;
 
-  /* Neutrals */
-  --bg: #f6f7fb;
-  --surface: #ffffff;
-  --surface-2: #fbfbfe;
-  --border: #e8eaf0;
-  --border-strong: #d7dae4;
-  --text: #1a1c2e;
-  --text-muted: #6b7192;
-  --text-soft: #9aa0bd;
+  /* Neutrals — warm sand & charcoal ink */
+  --bg: #f2ede4;
+  --surface: #fdfbf7;
+  --surface-2: #f7f2ea;
+  --border: #e9e2d5;
+  --border-strong: #d9d0c0;
+  --text: #262019;
+  --text-muted: #6f665a;
+  --text-soft: #a89e8e;
 
-  /* Elevation */
-  --shadow-sm: 0 1px 2px rgba(20, 22, 48, 0.06);
-  --shadow: 0 4px 16px rgba(20, 22, 48, 0.08);
-  --shadow-lg: 0 12px 40px rgba(20, 22, 48, 0.12);
-  --shadow-brand: 0 8px 24px rgba(99, 102, 241, 0.28);
+  /* Elevation — warm shadows */
+  --shadow-sm: 0 1px 2px rgba(40, 32, 22, 0.06);
+  --shadow: 0 4px 16px rgba(40, 32, 22, 0.09);
+  --shadow-lg: 0 12px 40px rgba(40, 32, 22, 0.14);
+  --shadow-brand: 0 8px 24px rgba(176, 96, 58, 0.26);
 
   --radius-sm: 8px;
   --radius: 14px;
@@ -94,7 +95,7 @@ h4 {
 }
 
 ::selection {
-  background: var(--brand-300);
+  background: var(--brand-500);
   color: #fff;
 }
 
@@ -104,12 +105,12 @@ h4 {
   height: 10px;
 }
 ::-webkit-scrollbar-thumb {
-  background: #d5d8e4;
+  background: #d8cfbf;
   border-radius: 20px;
   border: 3px solid var(--bg);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #bcc0d2;
+  background: #c3b8a5;
 }
 
 /* ============================================================
@@ -164,7 +165,7 @@ h4 {
   pointer-events: none;
 }
 .btn-primary:hover:not(:disabled) {
-  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+  box-shadow: 0 10px 30px rgba(176, 96, 58, 0.38);
   transform: translateY(-1px);
 }
 .btn-primary:hover:not(:disabled)::after {
@@ -229,7 +230,7 @@ h4 {
 .select:focus,
 .textarea:focus {
   border-color: var(--brand-500);
-  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.14);
+  box-shadow: 0 0 0 4px rgba(176, 96, 58, 0.15);
 }
 .input::placeholder,
 .textarea::placeholder {
@@ -281,7 +282,7 @@ h4 {
 .badge-warning { background: var(--warning-bg); color: var(--warning); }
 .badge-danger { background: var(--danger-bg); color: var(--danger); }
 .badge-info { background: var(--info-bg); color: var(--info); }
-.badge-neutral { background: #eef0f6; color: var(--text-muted); }
+.badge-neutral { background: #ede5d8; color: var(--text-muted); }
 .badge-brand { background: var(--brand-50); color: var(--brand-600); }
 
 /* ============================================================
@@ -356,7 +357,7 @@ table.data tbody tr:last-child td {
 .skeleton {
   position: relative;
   overflow: hidden;
-  background: #edeef4;
+  background: #ece5d9;
   border-radius: var(--radius-sm);
 }
 .skeleton::after {
