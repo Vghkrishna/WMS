@@ -6,6 +6,7 @@ import { Warehouse, Mail, Lock, ArrowRight, Eye, EyeOff } from 'lucide-react';
 import { useAuth } from '../context/AuthContext.jsx';
 import { getErrorMessage } from '../lib/format.js';
 import Spinner from '../components/ui/Spinner.jsx';
+import WarehouseScene from '../components/WarehouseScene.jsx';
 
 const demoAccounts = [
   { role: 'Admin', email: 'admin@wms.com', password: 'admin123' },
@@ -68,24 +69,13 @@ const Login = () => {
             Track stock in real time, manage inbound &amp; outbound movements,
             and get instant low-stock alerts — all with role-based access.
           </motion.p>
-          <div className="login-stats">
-            {[
-              ['Real-time', 'Stock levels'],
-              ['Role-based', 'Access control'],
-              ['Full audit', 'Movement logs'],
-            ].map(([a, b], i) => (
-              <motion.div
-                key={a}
-                className="login-stat"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.35 + i * 0.1 }}
-              >
-                <strong>{a}</strong>
-                <span>{b}</span>
-              </motion.div>
-            ))}
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.35, duration: 0.5 }}
+          >
+            <WarehouseScene />
+          </motion.div>
         </div>
         <div className="login-orb login-orb-1" />
         <div className="login-orb login-orb-2" />

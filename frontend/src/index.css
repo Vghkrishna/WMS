@@ -274,6 +274,8 @@ h4 {
   font-weight: 700;
   letter-spacing: 0.02em;
   text-transform: capitalize;
+  cursor: default; /* badges are status labels, not buttons */
+  user-select: none;
 }
 .badge-success { background: var(--success-bg); color: var(--success); }
 .badge-warning { background: var(--warning-bg); color: var(--warning); }
