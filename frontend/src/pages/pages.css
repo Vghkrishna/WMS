@@ -88,14 +88,64 @@
   overflow: hidden;
   background: linear-gradient(150deg, #17162a 0%, #2b2350 55%, #4c3a8a 100%);
   color: #fff;
-  padding: 56px;
   display: flex;
-  align-items: center;
+}
+/* Full-bleed background video */
+.login-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  animation: login-video-in 1.2s ease forwards;
+}
+@keyframes login-video-in {
+  from { opacity: 0; transform: scale(1.06); }
+  to { opacity: 1; transform: scale(1); }
+}
+/* Readability scrim: darker at top-left and bottom where text sits */
+.login-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(15, 14, 32, 0.72) 0%,
+      rgba(15, 14, 32, 0.28) 34%,
+      rgba(15, 14, 32, 0.55) 72%,
+      rgba(15, 14, 32, 0.92) 100%
+    ),
+    linear-gradient(105deg, rgba(76, 58, 138, 0.5), rgba(15, 14, 32, 0.1));
+}
+/* subtle brand glow at the bottom */
+.login-scrim::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 40%;
+  background: radial-gradient(
+    120% 80% at 20% 100%,
+    rgba(99, 102, 241, 0.35),
+    transparent 70%
+  );
 }
 .login-brand-inner {
   position: relative;
   z-index: 2;
-  max-width: 460px;
+  width: 100%;
+  padding: 42px 56px 52px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.login-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .login-logo {
   display: inline-flex;
@@ -103,8 +153,7 @@
   gap: 12px;
   font-family: 'Sora', sans-serif;
   font-weight: 700;
-  font-size: 1.35rem;
-  margin-bottom: 56px;
+  font-size: 1.3rem;
 }
 .login-logo svg {
   background: var(--gradient-brand);
@@ -112,63 +161,62 @@
   border-radius: 12px;
   box-shadow: var(--shadow-brand);
 }
+.login-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #e6e6f5;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(8px);
+}
+.login-live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7);
+  animation: pulse-dot 1.8s ease-out infinite;
+}
+@keyframes pulse-dot {
+  0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.6); }
+  70% { box-shadow: 0 0 0 8px rgba(74, 222, 128, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+}
+.login-bottom {
+  max-width: 480px;
+}
 .login-brand h1 {
-  font-size: 2.6rem;
-  line-height: 1.12;
-  margin-bottom: 20px;
+  font-size: 2.7rem;
+  line-height: 1.1;
+  margin-bottom: 18px;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.4);
 }
 .login-brand p {
-  color: #c3c2e0;
+  color: #dad9ec;
   font-size: 1.02rem;
   line-height: 1.6;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.4);
 }
-.login-stats {
+.login-tags {
   display: flex;
-  gap: 14px;
-  margin-top: 44px;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 26px;
 }
-.login-stat {
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 14px;
-  padding: 16px 18px;
-  flex: 1;
-  backdrop-filter: blur(6px);
-}
-.login-stat strong {
-  display: block;
-  font-family: 'Sora', sans-serif;
-  font-size: 1.05rem;
-}
-.login-stat span {
-  color: #a9a8cf;
+.login-tags span {
+  padding: 8px 14px;
+  border-radius: 999px;
   font-size: 0.82rem;
-}
-.login-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(60px);
-  opacity: 0.55;
-}
-.login-orb-1 {
-  width: 340px;
-  height: 340px;
-  background: #6366f1;
-  top: -80px;
-  right: -60px;
-  animation: float 9s ease-in-out infinite;
-}
-.login-orb-2 {
-  width: 280px;
-  height: 280px;
-  background: #ec4899;
-  bottom: -70px;
-  left: -40px;
-  animation: float 11s ease-in-out infinite reverse;
-}
-@keyframes float {
-  0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(20px, -26px); }
+  font-weight: 600;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(8px);
 }
 .login-form-wrap {
   display: flex;

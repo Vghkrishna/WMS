@@ -6,7 +6,6 @@ import { Warehouse, Mail, Lock, ArrowRight, Eye, EyeOff } from 'lucide-react';
 import { useAuth } from '../context/AuthContext.jsx';
 import { getErrorMessage } from '../lib/format.js';
 import Spinner from '../components/ui/Spinner.jsx';
-import WarehouseScene from '../components/WarehouseScene.jsx';
 
 const demoAccounts = [
   { role: 'Admin', email: 'admin@wms.com', password: 'admin123' },
@@ -41,44 +40,66 @@ const Login = () => {
 
   return (
     <div className="login-screen">
-      {/* Left brand panel */}
+      {/* Left brand panel — full-bleed warehouse video with overlaid text */}
       <motion.div
         className="login-brand"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.6 }}
       >
+        <video
+          className="login-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          aria-hidden="true"
+        >
+          <source src="/warehouse.mp4" type="video/mp4" />
+        </video>
+        <div className="login-scrim" />
+
         <div className="login-brand-inner">
-          <div className="login-logo">
-            <Warehouse size={26} />
-            <span>StockFlow</span>
+          <div className="login-top">
+            <div className="login-logo">
+              <Warehouse size={24} />
+              <span>StockFlow</span>
+            </div>
+            <span className="login-live">
+              <span className="login-live-dot" /> Live warehouse
+            </span>
           </div>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.15, duration: 0.5 }}
-          >
-            Warehouse Inventory,
-            <br /> under control.
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.25, duration: 0.5 }}
-          >
-            Track stock in real time, manage inbound &amp; outbound movements,
-            and get instant low-stock alerts — all with role-based access.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.35, duration: 0.5 }}
-          >
-            <WarehouseScene />
-          </motion.div>
+
+          <div className="login-bottom">
+            <motion.h1
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.55 }}
+            >
+              Warehouse Inventory,
+              <br /> under control.
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.32, duration: 0.55 }}
+            >
+              Track stock in real time, manage inbound &amp; outbound movements,
+              and get instant low-stock alerts — all with role-based access.
+            </motion.p>
+            <motion.div
+              className="login-tags"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.44, duration: 0.5 }}
+            >
+              <span>Real-time stock</span>
+              <span>Role-based access</span>
+              <span>Full audit trail</span>
+            </motion.div>
+          </div>
         </div>
-        <div className="login-orb login-orb-1" />
-        <div className="login-orb login-orb-2" />
       </motion.div>
 
       {/* Right form panel */}
